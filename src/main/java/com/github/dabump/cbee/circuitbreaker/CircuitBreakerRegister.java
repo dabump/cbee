@@ -10,7 +10,6 @@ import java.util.Map;
  */
 public class CircuitBreakerRegister {
 
-//  <TODO - Hazelcast MAP implementation>
     private static Map<String, CircuitBreakerImpl> breakers = Collections.synchronizedMap(new HashMap<>());
 
     public static CircuitBreakerImpl get(String scope, long invocationTimeout, long openStateTimeout, int failureThreshold) {

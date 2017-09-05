@@ -17,7 +17,7 @@ import java.util.Collection;
 @Produces({"application/json"})
 @Consumes({"application/json"})
 @Log
-public class CircuitBreakerAPI {
+public class CircuitBreakerEndpoint {
 
     @GET
     @Path("/")

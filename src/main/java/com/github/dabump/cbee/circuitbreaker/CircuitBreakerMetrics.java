@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.time.Instant;
 
+/**
+ * @author Martin Coetzee (martin@martincoetzee.com)
+ */
 @Data
 public class CircuitBreakerMetrics {
 

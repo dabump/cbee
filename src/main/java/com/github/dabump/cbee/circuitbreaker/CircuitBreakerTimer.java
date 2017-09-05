@@ -3,6 +3,9 @@ package com.github.dabump.cbee.circuitbreaker;
 import javax.ejb.Schedule;
 import javax.ejb.Singleton;
 
+/**
+ * @author Martin Coetzee (martin@martincoetzee.com)
+ */
 @Singleton
 public class CircuitBreakerTimer {
 
