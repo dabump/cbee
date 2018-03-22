@@ -38,6 +38,7 @@ public class CircuitBreakerInterceptor implements Serializable {
                         }
                     }
                     if (!avoided) {
+                        log.log(Level.WARNING, "Circuit breaker caught unignored exception, marking as failed: " + e.getMessage());
                         txn.setFailed(e);
                         cb.closeTransaction(txn);
                     }
