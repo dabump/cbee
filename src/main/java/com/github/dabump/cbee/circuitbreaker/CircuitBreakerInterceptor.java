@@ -22,7 +22,7 @@ public class CircuitBreakerInterceptor implements Serializable {
         if (sb != null) {
             CircuitBreakerImpl cb = CircuitBreakerRegister.get(sb.scope(), sb.invocationTimeoutinMillis(), sb.openStatementResetInMillies(), sb.failureThershold());
 
-            log.log(Level.INFO, "Current circuit breaker state: " + cb.getState());
+            log.log(Level.FINE, "Circuit breaker [" + cb.getScope() + "] state: " + cb.getState());
 
             if (cb.isInvocationPermitted()) {
                 CircuitBreakerTransaction txn = cb.openTransaction();
@@ -38,14 +38,14 @@ public class CircuitBreakerInterceptor implements Serializable {
                         }
                     }
                     if (!avoided) {
-                        log.log(Level.WARNING, "Circuit breaker caught unignored exception, marking as failed: " + e.getMessage());
+                        log.log(Level.WARNING, "Circuit breaker [ " + cb.getScope() + "] caught unignored exception, marking as failed: " + e.getMessage());
                         txn.setFailed(e);
                         cb.closeTransaction(txn);
                     }
                     throw e;
                 }
             } else {
-                throw new CircuitBreakerOpenedException("Circuit breaker opened for scope ["+sb.scope()+"]");
+                throw new CircuitBreakerOpenedException("Circuit breaker [" + sb.scope() + "] state: OPEN");
             }
         } else return ic.proceed();
     }
