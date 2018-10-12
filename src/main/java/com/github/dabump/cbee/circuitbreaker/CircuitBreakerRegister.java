@@ -1,16 +1,15 @@
 package com.github.dabump.cbee.circuitbreaker;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Martin Coetzee (martin@martincoetzee.com)
  */
 public class CircuitBreakerRegister {
 
-    private static Map<String, CircuitBreakerImpl> breakers = Collections.synchronizedMap(new HashMap<>());
+    private static Map<String, CircuitBreakerImpl> breakers = new ConcurrentHashMap<>();
 
     public static CircuitBreakerImpl get(String scope, long invocationTimeout, long openStateTimeout, int failureThreshold) {
         CircuitBreakerImpl breaker = breakers.get(scope);
