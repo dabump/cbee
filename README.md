@@ -13,7 +13,7 @@ Add the below to you maven pom.xml
         <dependency>
             <groupId>com.github.dabump</groupId>
             <artifactId>cbee</artifactId>
-            <version>1.0.2</version>
+            <version>1.0.5</version>
         </dependency>
 
 Add the following to your beans.xml
